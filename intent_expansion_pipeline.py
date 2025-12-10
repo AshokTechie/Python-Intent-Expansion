@@ -1,34 +1,3 @@
-#!/usr/bin/env python3
-"""
-intent_expansion_pipeline.py
-
-Intent Expansion Pipeline for "AI Workflow Analyst Intern" assignment.
-
-Features:
-- Loads inputs_for_assignment.json (intent_mapper + customer_messages)
-- Vectorizes messages (Gemini embeddings -> sentence-transformers -> TF-IDF+SVD fallback)
-- Clusters messages (HDBSCAN preferred, KMeans fallback)
-- Analyzes clusters for alignment with existing primary/secondary intents
-- Uses deterministic heuristics to propose:
-    - splits of existing secondary intents
-    - new secondary intents
-  with quantitative justification and guardrails.
-- Optional LLM assistance (Gemini or OpenAI) to generate clean intent IDs, display names,
-  descriptions and guardrails for proposals.
-- Produces outputs:
-    - suggested_intents.json
-    - intent_expansion_report.csv
-    - cluster_examples.csv
-
-Usage:
-    python intent_expansion_pipeline.py --input inputs_for_assignment.json.txt --outdir out \
-        --use_gemini --gemini_api_key YOUR_KEY
-
-If you don't have a Gemini key, run without --use_gemini; it will still run deterministically.
-
-Author: (your name)
-"""
-
 import os
 import json
 import re
